@@ -28,6 +28,7 @@ end
 get('/recipes/:id') do
   @recipe = Recipe.find(params.fetch("id").to_i())
   @ingredients = @recipe.ingredients()
+  @instructions = @recipe.instructions()
   erb(:recipe)
 end
 
@@ -37,6 +38,20 @@ post('/ingredients') do
   @recipe = Recipe.find(recipe_id)
   @new_ingredient = Ingredient.new({:description => ingredient, :recipe_id => recipe_id})
   if @new_ingredient.save()
+    redirect to("/recipes/#{recipe_id}")
+  else
+    @recipes = Recipe.all()
+    @categories = Category.all()
+    erb(:index)
+  end
+end
+
+post('/instructions') do
+  instruction = params.fetch("instruction")
+  recipe_id = params.fetch("recipe_id").to_i()
+  @recipe = Recipe.find(recipe_id)
+  @new_instruction = Instruction.new({:description => instruction, :recipe_id => recipe_id})
+  if @new_instruction.save()
     redirect to("/recipes/#{recipe_id}")
   else
     @recipes = Recipe.all()
