@@ -6,13 +6,13 @@
     <ul>
       <li><a href="/recipes/<%= recipe.id() %>"><%= recipe.description() %></a>
     </ul>
-  <% end>
+  <% end %>
 
 <% else %>
 
   <a href="/recipes/new">Add a new recipe!</a>
 
-<% end>
+<% end %>
 <br>
 <% if @categories.any?() %>
 
@@ -22,7 +22,7 @@
     <ul>
       <li><a href="/categories/<%= category.id() %>"><%= category.description() %></a>
     </ul>
-  <% end>
+  <% end %>
 
 <% else %>
   no categories yet.
