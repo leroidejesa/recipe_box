@@ -16,8 +16,13 @@ end
 post('/recipes') do
   name = params.fetch('name')
   @new_recipe = Recipe.new({:description => name})
-  @new_recipe.save()
-  redirect to("/recipes/#{@new_recipe.id}")
+  if @new_recipe.save()
+    redirect to("/recipes/#{@new_recipe.id}")
+  else
+    @recipes = Recipe.all()
+    @categories = Category.all()
+    erb(:index)
+  end
 end
 
 get('/recipes/:id') do
