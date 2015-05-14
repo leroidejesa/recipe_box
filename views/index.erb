@@ -1,0 +1,29 @@
+<% if @recipes.any?() %>
+
+  <h1>All Recipes:</h1>
+
+  <% @recipes.each() do |recipe| %>
+    <ul>
+      <li><a href="/recipes/<%= recipe.id() %>"><%= recipe.description() %></a>
+    </ul>
+  <% end>
+
+<% else %>
+
+  <a href="/recipes/new">Add a new recipe!</a>
+
+<% end>
+<br>
+<% if @categories.any?() %>
+
+  <h1>Choose by Category:</h1>
+
+  <% @categories.each() do |category| %>
+    <ul>
+      <li><a href="/categories/<%= category.id() %>"><%= category.description() %></a>
+    </ul>
+  <% end>
+
+<% else %>
+  no categories yet.
+<% end %>
