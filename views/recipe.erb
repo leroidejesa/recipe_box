@@ -1,12 +1,33 @@
 
-<%= @recipe.description() %>
+<h1><%= @recipe.description() %></h1>
 
-#add ingredient
+<% if @ingredients.any? %>
+  <h3>Ingredients:</h3>
+  <% @ingredients.each do |ingredient| %>
+    <ul>
+      <li><%= ingredient.description() %></li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>no ingredients yet</p>
+<% end %>
 
-#add instruction
+#list instructions<br>
 
-#assign category
+#add ingredient<br>
+<form action="/ingredients" method="post">
+  <input id="recipe_id" name="recipe_id" type="hidden" value="<%= @recipe.id() %>">
+  <label for="ingredient">Add ingredient: (e.g."butter, 2 tablespoons")</label>
+  <input id="ingredient" name="ingredient" type="text">
 
-#delete button
+  <button type="submit">Submit</button>
+
+
+<br>
+#add instruction<br>
+
+#assign category<br>
+
+#delete button<br><br>
 
 <a href="/">Home</a>
