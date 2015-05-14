@@ -3,5 +3,5 @@ class Recipe < ActiveRecord::Base
   has_many:ingredients
   has_many:instructions
 
-  validates(:description, {:presence => true, :length => { :minimum => 1 }})
+  validates(:description, :presence => true)
 end
