@@ -1,5 +1,9 @@
 
-<h1><%= @recipe.description() %></h1>
+<h1>Recipe for:&nbsp;<%= @recipe.description() %></h1>
+<a href="/recipes/<%= @recipe.id() %>/edit">Edit</a>
+<h3>filed under:</h3> <% @recipe_categories.each do |category| %>
+  <li><%= category.description() %></li>
+  <% end %>
 
 <% if @ingredients.any? %>
   <h3>Ingredients:</h3>
@@ -14,36 +18,17 @@
 
 <% if @instructions.any? %>
   <h3>Instructions:</h3>
-  <% @instructions.each do |instruction| %>
-    <ol>
+  <ol><% @instructions.each do |instruction| %>
       <li><%= instruction.description() %></li>
-    </ol>
-  <% end %>
+  <% end %></ol>
 <% else %>
   <h4>no instructions yet</h4>
 <% end %>
 
-
-<form action="/ingredients" method="post">
-  <input id="recipe_id" name="recipe_id" type="hidden" value="<%= @recipe.id() %>">
-  <label for="ingredient">Add ingredient: (e.g."butter, 2 tablespoons")</label><br>
-  <input id="ingredient" name="ingredient" type="text">
-
-  <button type="submit">Submit</button>
-</form>
-
-<form action="/instructions" method="post">
-  <input id="recipe_id" name="recipe_id" type="hidden" value="<%= @recipe.id() %>">
-  <label for="instruction">Add a step:</label><br>
-  <input id="instruction" name="instruction" type="text">
-
-  <button type="submit">Submit</button>
-</form>
-
-#assign category<br>
-
+<br><br>
 #rate this recipe
-
-#delete button<br><br>
+<br><br>
+#delete button
+<br><br>
 
 <a href="/">Home</a>

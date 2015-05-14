@@ -5,6 +5,16 @@ set(:show_exceptions, false)
 require('spec_helper')
 
 # As a user, I want to add a recipe with ingredients and instructions, so I remember how to prepare my favorite dishes.
+  # describe('path to add new recipe', {:type => :feature}) do
+  #   it('allows a user to add a recipe') do
+  #     visit('/')
+  #     click_link('ADD A STYLIST')
+  #     fill_in('NAME', :with =>'George')
+  #     click_button('ADD')
+  #     click_link('HOME')
+  #     expect(page).to have_content('George')
+  #   end
+  # end
 
 # As a user, I want to organize my recipes into different categories, so recipes are easier to find. A recipe can have many categories and a category can have many recipes.
 
