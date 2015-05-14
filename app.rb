@@ -1,5 +1,5 @@
 require("bundler/setup")
-Bundler.require(:default)
+Bundler.require(:default, :production)
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
@@ -7,4 +7,20 @@ get('/') do
   @recipes = Recipe.all()
   @categories = Category.all()
   erb(:index)
+end
+
+get('/recipes/new') do
+  erb(:recipe_form)
+end
+
+post('/recipes') do
+  name = params.fetch('name')
+  @new_recipe = Recipe.new({:description => name})
+  @new_recipe.save()
+  redirect to("/recipes/#{@new_recipe.id}")
+end
+
+get('/recipes/:id') do
+  @recipe = Recipe.find(params.fetch("id").to_i())
+  erb(:recipe)
 end

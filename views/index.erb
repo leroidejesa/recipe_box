@@ -1,6 +1,8 @@
+<h1>Recipe Box</h1>
+
 <% if @recipes.any?() %>
 
-  <h1>All Recipes:</h1>
+  <h3>All Recipes:</h3>
 
   <% @recipes.each() do |recipe| %>
     <ul>
@@ -10,13 +12,13 @@
 
 <% else %>
 
-  <a href="/recipes/new">Add a new recipe!</a>
+  <p>no recipes yet.</p>
 
 <% end %>
 <br>
 <% if @categories.any?() %>
 
-  <h1>Choose by Category:</h1>
+  <h3>Choose by Category:</h3>
 
   <% @categories.each() do |category| %>
     <ul>
@@ -25,5 +27,7 @@
   <% end %>
 
 <% else %>
-  no categories yet.
+  <p>no categories yet.</p>
 <% end %>
+
+<a href="/recipes/new">Add a new recipe!</a>
