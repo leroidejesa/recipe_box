@@ -1,23 +1,22 @@
 
-<h1>Recipe for:&nbsp;<%= @recipe.description() %></h1>
-<a href="/recipes/<%= @recipe.id() %>/edit">Edit</a>
-<h3>filed under:</h3> <% @recipe_categories.each do |category| %>
-  <li><%= category.description() %></li>
-  <% end %>
+<h1><%= @recipe.description() %></h1>
+<a href="/recipes/<%= @recipe.id() %>/edit">Enter Edit Mode</a>
+<h6><strong>FILED UNDER:</strong><br><% @recipe_categories.each do |category| %>
+  <%= category.description() %><br>
+  <% end %><h6>
+<br>
 
 <% if @ingredients.any? %>
-  <h3>Ingredients:</h3>
-  <% @ingredients.each do |ingredient| %>
-    <ul>
+  <h4>Ingredients:</h4>
+  <ul><% @ingredients.each do |ingredient| %>
       <li><%= ingredient.description() %></li>
-    </ul>
-  <% end %>
+  <% end %></ul>
 <% else %>
   <p>no ingredients yet</p>
 <% end %>
 
 <% if @instructions.any? %>
-  <h3>Instructions:</h3>
+  <h4>Instructions:</h4>
   <ol><% @instructions.each do |instruction| %>
       <li><%= instruction.description() %></li>
   <% end %></ol>
@@ -25,9 +24,10 @@
   <h4>no instructions yet</h4>
 <% end %>
 
-<br><br>
+<br>
+
 #rate this recipe
-<br><br>
+<br>
 #delete button
 <br><br>
 

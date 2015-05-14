@@ -1,15 +1,14 @@
-<h1>EDIT MODE</h1>(<a href="/recipes/<%= @recipe.id %>">Exit</a>)
-<h1>Recipe for:&nbsp;<%= @recipe.description() %></h1>
-<h4><a href="/recipes/<%= @recipe.id %>/edit/category">Change Categories</a>
+<h1><%= @recipe.description() %></h1>
+<font color="red">WARNING:</font> YOU ARE IN EDIT MODE! (<a href="/recipes/<%= @recipe.id %>">Exit</a>)
+<h5><a href="/recipes/<%= @recipe.id %>/edit/category">Change Categories</a></h5>
+<br>
 
 
 <% if @ingredients.any? %>
-  <h3>Ingredients:</h3>
-  <% @ingredients.each do |ingredient| %>
-    <ul>
+  <h4>Ingredients:</h4>
+  <ul><% @ingredients.each do |ingredient| %>
       <li><%= ingredient.description() %></li>
-    </ul>
-  <% end %>
+  <% end %></ul>
 <% else %>
   <p>no ingredients yet</p>
 <% end %>
@@ -21,9 +20,10 @@
 
   <button type="submit">Submit</button>
 </form>
+<br>
 
 <% if @instructions.any? %>
-  <h3>Instructions:</h3>
+  <h4>Instructions:</h4>
   <ol><% @instructions.each do |instruction| %>
       <li><%= instruction.description() %></li>
   <% end %></ol>
@@ -40,4 +40,8 @@
   <button type="submit">Submit</button>
 </form>
 
+<br>
+<br>
+<a href="/">Go Home</a>
+<br>
 <br>

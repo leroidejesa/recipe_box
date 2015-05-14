@@ -15,7 +15,8 @@
   <p>no recipes yet.</p>
 
 <% end %>
-<br>
+
+
 <% if @categories.any?() %>
 
   <h3>Choose by Category:</h3>
@@ -29,6 +30,8 @@
 <% else %>
   <p>no categories yet.</p>
 <% end %>
+
+<br>
 
 <a href="/recipes/new">Add a new recipe!</a><br>
 <a href="/categories/new">Add a new category!</a>
