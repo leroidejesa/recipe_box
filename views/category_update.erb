@@ -1,0 +1,19 @@
+<h1>Update Categories</h1>
+<% if @categories.any?() %>
+<h4>Check all that apply:</h4>
+<form action="/recipe/categories/<%= @recipe.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <% @categories.each() do |category| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="category_ids[]" value="<%= category.id() %>"><%= category.description() %>
+      </label>
+    </div>
+  <% end %>
+  <button type="submit">Update categories</button>
+  <% else %>
+  <h3>no categories yet!</h3>
+
+</form>
+<% end %>

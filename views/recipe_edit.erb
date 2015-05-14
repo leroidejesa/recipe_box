@@ -1,0 +1,43 @@
+<h1>EDIT MODE</h1>(<a href="/recipes/<%= @recipe.id %>">Exit</a>)
+<h1>Recipe for:&nbsp;<%= @recipe.description() %></h1>
+<h4><a href="/recipes/<%= @recipe.id %>/edit/category">Change Categories</a>
+
+
+<% if @ingredients.any? %>
+  <h3>Ingredients:</h3>
+  <% @ingredients.each do |ingredient| %>
+    <ul>
+      <li><%= ingredient.description() %></li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>no ingredients yet</p>
+<% end %>
+
+<form action="/ingredients" method="post">
+  <input id="recipe_id" name="recipe_id" type="hidden" value="<%= @recipe.id() %>">
+  <label for="ingredient">Add ingredient: (e.g."butter, 2 tablespoons")</label><br>
+  <input id="ingredient" name="ingredient" type="text">
+
+  <button type="submit">Submit</button>
+</form>
+
+<% if @instructions.any? %>
+  <h3>Instructions:</h3>
+  <ol><% @instructions.each do |instruction| %>
+      <li><%= instruction.description() %></li>
+  <% end %></ol>
+<% else %>
+  <h4>no instructions yet</h4>
+<% end %>
+
+
+<form action="/instructions" method="post">
+  <input id="recipe_id" name="recipe_id" type="hidden" value="<%= @recipe.id() %>">
+  <label for="instruction">Add a step:</label><br>
+  <input id="instruction" name="instruction" type="text">
+
+  <button type="submit">Submit</button>
+</form>
+
+<br>

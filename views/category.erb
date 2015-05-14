@@ -1,0 +1,12 @@
+<% if @recipes.any?() %>
+  <h3>Recipes:</h3>
+  <% @recipes.each do |recipe| %>
+  <ul>
+    <li><a href="/recipes/<%= recipe.id %>"><%= recipe.description() %></li>
+  </ul>
+  <% end %>
+<% else %>
+  <h3>no recipes in this category</h3>
+<% end %>
+
+<a href="/">Home</a>
